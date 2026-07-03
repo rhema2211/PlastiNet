@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PlastiNet — Live Neuroplasticity Simulator</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.9.0/d3.min.js"></script>
+</head>
+<body>
+
+<div class="console">
+
+  <header class="console-header">
+    <div class="brand">
+      <span class="brand-mark">◈</span>
+      <span class="brand-name">PlastiNet</span>
+    </div>
+    <div class="mode-switch">
+      <span class="mode-label">plasticity mode</span>
+      <button class="mode-btn active" data-mode="child">CHILD</button>
+      <button class="mode-btn" data-mode="adult">ADULT</button>
+    </div>
+  </header>
+
+  <main class="console-body">
+
+    <section class="graph-panel">
+      <svg id="graph" viewBox="0 0 900 620" preserveAspectRatio="xMidYMid meet"></svg>
+      <div class="graph-caption">live synaptic map — teal = strong, dim = weak, dissolving = pruned</div>
+    </section>
+
+    <aside class="readout-panel">
+
+      <div class="readout-block">
+        <div class="readout-title">region strength</div>
+        <div class="bar-row" data-region="attention">
+          <span class="bar-label">Attention</span>
+          <div class="bar-track"><div class="bar-fill" id="bar-attention"></div></div>
+          <span class="bar-value" id="val-attention">0.00</span>
+        </div>
+        <div class="bar-row" data-region="memory">
+          <span class="bar-label">Memory</span>
+          <div class="bar-track"><div class="bar-fill" id="bar-memory"></div></div>
+          <span class="bar-value" id="val-memory">0.00</span>
+        </div>
+        <div class="bar-row" data-region="focus">
+          <span class="bar-label">Focus</span>
+          <div class="bar-track"><div class="bar-fill" id="bar-focus"></div></div>
+          <span class="bar-value" id="val-focus">0.00</span>
+        </div>
+      </div>
+
+      <div class="readout-block">
+        <div class="readout-title">train a region</div>
+        <div class="train-buttons">
+          <button class="train-btn" data-region="attention">Attention Task</button>
+          <button class="train-btn" data-region="memory">Memory Task</button>
+          <button class="train-btn" data-region="focus">Focus Task</button>
+        </div>
+      </div>
+
+      <div class="readout-block">
+        <div class="readout-title">session log</div>
+        <div class="log" id="log">
+          <div class="log-line log-muted">— waiting to start —</div>
+        </div>
+      </div>
+
+      <button class="reset-btn" id="reset-btn">↻ Reset Session</button>
+
+    </aside>
+
+  </main>
+
+</div>
+
+<script src="network.js"></script>
+</body>
+</html>
